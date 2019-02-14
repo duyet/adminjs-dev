@@ -1,10 +1,10 @@
 ## Admin Bro
 
-An automatic admin interface which can be plugged into your application. You, as a developer, provide database models (like posts, comments, stores, products or whatever else your application uses), and AdminBro generates UI which allows you (or other trusted users) to manage content.
+An automatic admin interface which can be plugged into your application. You, as a developer, provide database models (like posts, comments, stores, products or whatever else your application uses) and AdminBro generates a UI which allows you (or other trusted users) to manage content.
 
 ### Live example
 
-Check out the example application with mongodb and postgres models here: [https://admin-bro-example-app.herokuapp.com/admin](https://admin-bro-example-app.herokuapp.com/admin)
+Check out the example application with MongoBD and Postgres models here: [https://admin-bro-example-app.herokuapp.com/admin](https://admin-bro-example-app.herokuapp.com/admin)
 
 
 <a href="https://admin-bro-example-app.herokuapp.com/admin" style="margin-right: 80px" class="button is-pulled-left" target="_blank">See the demo app</a>
@@ -15,7 +15,7 @@ Check out the example application with mongodb and postgres models here: [https:
 
 - Check out the [demo page](https://admin-bro-example-app.herokuapp.com/admin)
 - Follow tutorials, strarting with {@tutorial 01-example}
-- checkout our [admin-bro git repo](https://github.com/SoftwareBrothers/admin-bro)
+- Check out our [admin-bro git repo](https://github.com/SoftwareBrothers/admin-bro)
 
 ### Screenshots
 

@@ -1,4 +1,4 @@
-AdminBro is an __automatic admin interface__ which allows you to manage your database resources. It can be added to almost any nodejs framework. In this short tutorial I will show you how configure AdminBro to manage _User_ [mongoosejs](https://mongoosejs.com/) resource in a simple [express.js](https://expressjs.com/) app.
+AdminBro is an __automatic admin interface__, which allows you to manage your database resources. It can be added to almost any Node.js framework. In this short tutorial, I will show you how to configure AdminBro to manage _User_ [mongoosejs](https://mongoosejs.com/) resource in a simple [express.js](https://expressjs.com/) app.
 
 We will:
 
@@ -7,13 +7,13 @@ We will:
 
 ## Let's do this!
 
-In the first step we will create a simple __one file__ API server.
+In the first step, we will create a simple __one file__ API server.
 
 ## An example app without an AdminBro
 
-The app is an [express.js](https://expressjs.com/) API server which uses [mongoosejs](https://mongoosejs.com/) to fetch data from mongodb and returns it in an JSON format.
+The app is an [express.js](https://expressjs.com/) API server, which uses [mongoosejs](https://mongoosejs.com/) to fetch data from MongoDB and returns it in a JSON format.
 
-The code of the app looks like this.
+The code of the app looks like this:
 
 ```javascript
 // ==========  server.js ==============
@@ -22,7 +22,7 @@ const mongoose = require('mongoose')
 const express = require('express')
 const bodyParser = require('body-parser')
 
-// express server definition
+// Express server definition
 const app = express()
 app.use(bodyParser.json())
 
@@ -32,13 +32,13 @@ const User = mongoose.model('User', { name: String, email: String, surname: Stri
 // Routes definitions
 app.get('/', (req, res) => res.send('Hello World!'))
 
-// Route which returns last 100 users from the database
+// Route, which returns last 100 users from the database
 app.get('/users', async (req, res) => {
   const users = await User.find({}).limit(10)
   res.send(users)
 })
 
-// Route which creates new user
+// Route, which creates new user
 app.post('/users', async (req, res) => {
   const user = await new User(req.body.user).save()
   res.send(user)
@@ -59,15 +59,15 @@ To run it you have to install dependencies:
 npm install mongoose express body-parser
 ```
 
-Make sure you have a [mongodb](https://www.mongodb.com/) running in the system.
+Make sure you have a [MongoDB](https://www.mongodb.com/) running in the system.
 
-and you can run the server via `node` command:
+Now you can run the server via `node` command:
 
 ```sh
 node server.js
 ```
 
-Server exposes 2 routes `GET /users` and `POST /users` you can test them by using [curl](https://curl.haxx.se/):
+Server exposes 2 routes: `GET /users` and `POST /users` You can test them by using [curl](https://curl.haxx.se/):
 
 ```sh
 curl -d '{"user": {"name": "wojtek"}}' -H "Content-Type: application/json" -X POST http://localhost:8080/users/
@@ -79,17 +79,17 @@ curl http://localhost:8080/users
 
 ## Adding AdminBro
 
-Ok - so now we would like to add an __admin UI__ with the ability to manage users. Of course we will be using __AdminBro__ in order to do that. 
+OK, so now we would like to add an __admin UI__ with the ability to manage users. Of course, we will be using __AdminBro__ in order to do that. 
 
-First, let's install all dependencies. We are using mongoose so we will have to install admin-bro-mongoose database adapter. Also we use expressjs, that is why we will need admin-bro-expressjs plugin:
+First, let's install all dependencies. We are using Mongoose, hence we will have to install admin-bro-mongoose database adapter. Also we use Express.js, that is why we will need admin-bro-expressjs plugin:
 
 ```sh
 npm install admin-bro admin-bro-mongoose admin-bro-expressjs
 ```
 
-So now we have to use those modules. We will:
-- use {@link module:AdminBroExpressjs AdminBroExpressjs} module from 'admin-bro-expressjs' package to attach AdminBro into an express routes.
-- use {@link module:AdminBroMongoose AdminBroMongoose} adapter form 'admin-bro-mongoose' package to add mongoose Resources to the admin panel. 
+Now we have to use said modules:
+- use {@link module:AdminBroExpressjs AdminBroExpressjs} module from 'admin-bro-expressjs' package to attach AdminBro into Express routes.
+- use {@link module:AdminBroMongoose AdminBroMongoose} adapter from 'admin-bro-mongoose' package to add Mongoose resources to the admin panel. 
 
 This is how it will look like:
 
@@ -97,7 +97,7 @@ This is how it will look like:
 const AdminBro = require('admin-bro')
 const AdminBroExpressjs = require('admin-bro-expressjs')
 
-// We have to tell AdminBro that we will manage mongoose resources with it
+// We have to tell AdminBro that we will manage Mongoose resources with it
 AdminBro.registerAdapter(require('admin-bro-mongoose'))
 
 // Pass all configuration settings to AdminBro
@@ -106,14 +106,14 @@ const adminBro = new AdminBro({
   rootPath: '/admin',
 })
 
-// Build and use a router which will handle all AdminBro routes
+// Build and use a router, which will handle all AdminBro routes
 const router = AdminBroExpressjs.buildRouter(adminBro)
 app.use(adminBro.options.rootPath, router)
 ```
 
 ## Full application in one file
 
-This is an entire Express server with AdminBro managing Mongoose User Resource:
+This is an entire Express server with AdminBro managing Mongoose user resource:
 
 ```javascript
 // ==========  server.js ==============
@@ -124,10 +124,10 @@ const bodyParser = require('body-parser')
 const AdminBro = require('admin-bro')
 const AdminBroExpressjs = require('admin-bro-expressjs')
 
-// We have to tell AdminBro that we will manage mongoose resources with it
+// We have to tell AdminBro that we will manage Mongoose resources with it
 AdminBro.registerAdapter(require('admin-bro-mongoose'))
 
-// express server definition
+// Express server definition
 const app = express()
 app.use(bodyParser.json())
 
@@ -137,13 +137,13 @@ const User = mongoose.model('User', { name: String, email: String, surname: Stri
 // Routes definitions
 app.get('/', (req, res) => res.send('Hello World!'))
 
-// Route which returns last 100 users from the database
+// Route, which returns last 100 users from the database
 app.get('/users', async (req, res) => {
   const users = await User.find({}).limit(10)
   res.send(users)
 })
 
-// Route which creates new user
+// Route, which creates new user
 app.post('/users', async (req, res) => {
   const user = await new User(req.body.user).save()
   res.send(user)
@@ -155,7 +155,7 @@ const adminBro = new AdminBro({
   rootPath: '/admin',
 })
 
-// Build and use a router which will handle all AdminBro routes
+// Build and use a router, which will handle all AdminBro routes
 const router = AdminBroExpressjs.buildRouter(adminBro)
 app.use(adminBro.options.rootPath, router)
 
@@ -178,9 +178,9 @@ and, under `localhost:8080/admin`, you should see something like this:
 
 <img src="images/one-file-example.png">
 
-## What next
+## What's next
 
-So now you know how to add AdminBro to simple express.js app. If you are using a different framework
+Now you know how to add AdminBro to simple Express.js app. If you are using a different framework
 or you want to discover different authentication options - visit the next tutorial {@tutorial 02-frameworks}.
 
 <a href="/tutorial-02-frameworks.html" class="button">See all the supported frameworks</a>

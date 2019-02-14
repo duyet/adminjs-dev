@@ -187,4 +187,4 @@ or you want to discover different authentication options - visit the next tutori
 
 or skip it and go right away to:
 
-<a href="/tutorial-03-passing-resources.html" class="button">adding resources</a>
+<a href="/tutorial-03-passing-resources.html" class="button">adding resources</a>.

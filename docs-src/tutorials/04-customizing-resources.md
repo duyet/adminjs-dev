@@ -11,7 +11,7 @@ const Article = require('./models/article')
 
 const adminBroOptions = {
   resources: [
-    { resource: Article, options: '...your options goes here' },
+    { resource: Article, options: '...your options go here' },
   ],
   branding: {
     companyName: 'Amazing c.o.',
@@ -25,17 +25,17 @@ When not passed - AdminBro will use defaults.
 
 ## How a __Resource__ can be modified?
 
-You have lots of options. You can modify basic appearance of a resource and more complicate aspects, as
+You have lots of options. You can modify basic appearance of a resource as well as more complicate aspects, such as
 how a particular field should be rendered.
 
-In the next sections I will point out a couple of options.
+In the next sections, I will point out a couple of options.
 
 ### { __parent__ } In the sidebar
 
-By default AdminBro groups resources by the database they belong to. But you can change that and group them
+By default, AdminBro groups resources by the database they belong to, but you can change that and group them
 in a different way. It can be done by using a `parent` option.
 
-So let say you want to group all text'ish resources into a __content__ category in the sidebar.
+Lets say you want to group all text'ish resources into a __content__ category in the sidebar.
 You can do this by passing the __parent__ as an option:
 
 ```javascript
@@ -52,14 +52,14 @@ const adminBroOptions = {
 }
 ```
 
-This will group all Resources together in a "Content" category in a sidebar - and it adds
+This will group all Resources together in a "Content" category in a sidebar. It'll aslo automatically add
 __file-text__ icon from {@link https://fontawesome.com/}
 
 
 
 ### { __name__ } of a __Resource__
 
-By default - the name of a Resource is taken from the database _collection/table_ - you can change that
+By default, the name of a Resource is taken from the database _collection/table_. You can change that
 by setting a __name__ option.
 
 ```javascript
@@ -71,8 +71,8 @@ const adminBroOptions = {
 ```
 
 AdminBro has 2 fonts included by default:
-* {@link http://fizzed.com/oss/font-mfizz mfizz}
-* {@link https://fontawesome.com/ font awesome}
+* {@link http://fizzed.com/oss/font-mfizz Mfizz}
+* {@link https://fontawesome.com/ Font Awesome}
 
 You can add your own fonts by using: { __assets.styles__ } setting in {@link AdminBroOptions}.
 
@@ -80,9 +80,8 @@ You can add your own fonts by using: { __assets.styles__ } setting in {@link Adm
 
 It defines which properties should be visible in a __list__, __edit__, __show__ and __filter__ views.
 
-Lets say that you have a resource city with 20 fields like: _name, lat, lng, population, polution, ..._.
-By default AdminBro will render first DEFAULT_MAX_ITEMS_IN_LIST which is __8__. What if you want to
-present just 3 of them in a different order.
+For example, lets say that you have a resource city with 20 fields like: _name, lat, lng, population, polution, ..._.
+By default, AdminBro will render first DEFAULT_MAX_ITEMS_IN_LIST which is __8__. What if you want to present only 3 of them, but in a different order.
 
 You can do this by using __listProperties__ option:
 
@@ -106,12 +105,13 @@ Everything thanks to {@link PropertyOptions}.
 
 ### Visibility of properties { __...propertyName.position__ } and { __...propertyName.isVisible__ }
 
-using __xxxProperties__ is not the only way of handling which property should be seen on a list, edit, filter
-and show views. You can achieve a similar result by using __position__ and __isVisible__ options.
+Using __xxxProperties__ is not the only way of handling, which property should be seen on a "list", "edit", "filter"
+and "show" views. You can achieve a similar result by using __position__ and __isVisible__ options.
 
-Using them have more sense if you want to disable one particular field, so instead of modifying entire __xxxProperties__ array you can setup just one filed.
+It makes more sense to use them if you want to disable one particular field, so instead of modifying entire __xxxProperties__ array, you can setup just one filed.
 
-In the following example I will hide __name__ field in the __list__, __filter__ and the __edit__, but will leave it in a __show__ view.
+In the following example,
+I will hide __name__ field in the __list__, __filter__ and the __edit__, but will leave it in a __show__ view.
 
 ```javascript
 const adminBroOptions = {
@@ -125,19 +125,19 @@ const adminBroOptions = {
 }
 ```
 
-You can hide entire field from all views by simply setting __isVisible__ to false.
+You can hide the entire field from all views by simply setting __isVisible__ to false.
 
-Also you can simply change position of a field by using __position__ option. By default all fields has position __100__, except the __title__ field which gets position __-1__ - means it will be in the beginning of a list.
+Also, you can simply change position of a field by using __position__ option. By default, all fields has position __100__, except the __title__ field, which gets position __-1__ - meaning it will be in the beginning of a list.
 
 __Important notice about overriding xxxProperties__: both _{ propertyName.position }_ and _{ propertyName.isVisible }_ will be overriden by _xxxProperties_ if you set it.
 
 ### { __propertyName.type__ } of a property
 
-By default types of properties are computed by adapters, see {@tutorial 03-passing-resources} torial.
+By default, types of properties are computed by adapters, see {@tutorial 03-passing-resources} tutorial.
 
-So when you have a __DATE__ field it will be rendered as a __date__ with __datepicker__ and custom __from__ - __to__ filter.
+When you have a __DATE__ field, it will be rendered as a __date__ with __datepicker__ and a custom __from__ - __to__ filter.
 
-You can change this behaviour by modyfying its type. So for instance you can add a richtext editor to a  __content__ like that:
+You can change this behaviour by modyfying its type. So, for instance, you can add a richtext editor to a  __content__ like that:
 
 ```javascript
 const adminBroOptions = {
@@ -155,11 +155,11 @@ There are multiple fields supported (see PropertyTypes in the sidebar)
 
 ### { __propertyName.render__ } property appearance
 
-You can also totally change the way of how property is rendered. The only thing you have to do is to change its __render__ property.
+You can also change the way property is rendered. The only thing you have to do is to change its __render__ property.
 
-Render has all the fields defined by {@link PropertyType}. You can override just one of the field or all off them.
+Render has all the fields defined by {@link PropertyType}. You can override just one of the fields or all of them.
 
-So let say we want to change the way how __content__ property is rendered on the list:
+Lets say, we want to change the way how __content__ property is rendered on the list:
 
 ```javascript
 const adminBroOptions = {
@@ -175,14 +175,14 @@ const adminBroOptions = {
 }
 ```
 
-For examples take a looka at how those functions in different types were defined: <a href='./admin-bro_src_backend_property-types_richtext.js.html'>richtext.js</a>
+Take a look at how those functions were defined in different types: <a href='./admin-bro_src_backend_property-types_richtext.js.html'>richtext.js</a>
 
-For a detailed information about function arguments - take a look at the {@link PropertyType}.
+For a detailed information about function arguments, check {@link PropertyType}.
 
 ## Adding new properties
 
-Also you can add a new properties to the Resource by using a { __properties.propertyName__ }. You just need to define all renderers and this is it. For example if you want to group 'lat' and 'lng' fields on the list and display them as
-a _google map_ in a __show__ view you can use something like this:
+You can add a new properties to the Resource by using a { __properties.propertyName__ }. You simply define all renderers and that's it. For example, if you want to group 'lat' and 'lng' fields on the list and display them as
+a _Google Map_ in a __show__ view, you can use something like this:
 
 ```javascript
 const adminBroOptions = {
@@ -211,11 +211,9 @@ const adminBroOptions = {
 }
 ```
 
-
-In the example above we also use __head__ parameter having all __scripts__ and __styles__ which should be added
-to a HEAD of the page.
+Above, we also use __head__ parameter having all __scripts__ and __styles__, which should be added to a HEAD of the page.
 
 ## What's next?
 
-If you want to see details of how resources can be modified you can study how {@link PropertyDecorator} and {@link ResourceDecorator} look like.
+If you want to see an in-depth explanation on how resources can be modified, you can study how {@link PropertyDecorator} and {@link ResourceDecorator} look like.
 

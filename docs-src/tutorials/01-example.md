@@ -1,4 +1,4 @@
-AdminBro is an __automatic admin interface__, which allows you to manage your database resources. It can be added to almost any Node.js framework. In this short tutorial, I will show you how to configure AdminBro to manage _User_ [mongoosejs](https://mongoosejs.com/) resource in a simple [express.js](https://expressjs.com/) app.
+AdminBro is an __automatic admin interface__, which allows you to manage your database resources. It can be added to almost any Node.js framework. In this short tutorial, I will show you how to configure AdminBro to manage _User_ [Mongoose](https://mongoosejs.com/) resource in a simple [Express.js](https://expressjs.com/) app.
 
 We will:
 
